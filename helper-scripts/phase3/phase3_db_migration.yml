@@ -1,0 +1,2 @@
+mysqldump -h 10.0.0.204 -u nodeapp -p --databases STUDENTS > data.sql
+mysql -h rds-db-group12.cbnaxw1s5msc.us-east-1.rds.amazonaws.com -u admin -p  STUDENTS < data.sql
