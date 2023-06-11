@@ -101,7 +101,7 @@ export APP_PORT=80
 npm start' > /etc/rc.local
 chmod +x /etc/rc.local
 ```
-(This code can also be found in .sh file)
+(This code can also be found in helper-scripts folder)
  
 This ensured we have a MySQL server set up and ready for adding students. But it had it’s downsides, because each instance was isolated and the application was not scalable. Last task was to actually test this deployment with some basic CRUD tasks, which we performed manually, and below you can find the screenshots:
 (insert screenshots)
@@ -115,7 +115,7 @@ aws secretsmanager create-secret \
     --description "Database secret for web app" \
     --secret-string "{\"user\":\"...\",\"password\":\"...\",\"host\":\"rds-db-group12.cbnaxw1s5msc.us-east-1.rds.amazonaws.com\",\"db\":\"STUDENTS\"}"
 ```
-(This code can also be found in .sh file)
+(This code can also be found in helper-scripts folder)
  
 Next we've made the new EC2 instance, that's been set up with following user data, so it uses RDS and does not actually run local MySQL server:
 ```
@@ -136,7 +136,7 @@ export APP_PORT=80
 npm start' > /etc/rc.local
 chmod +x /etc/rc.local
 ```
-(This code can also be found in .sh file)
+(This code can also be found in helper-scripts folder)
  
 After this we proceeded on to migrate the database from Phase 2 into to the RDS, we've done that by running following scripts from Cloud9 environment:
  
@@ -144,7 +144,7 @@ After this we proceeded on to migrate the database from Phase 2 into to the RDS,
 mysqldump -h 10.0.0.204 -u nodeapp -p --databases STUDENTS > data.sql
 mysql -h rds-db-group12.cbnaxw1s5msc.us-east-1.rds.amazonaws.com -u admin -p  STUDENTS < data.sql
 ```
-(This code can also be found in .sh file)
+(This code can also be found in helper-scripts folder)
  
 At this point we made sure that database was successfully migrated, retested all CRUD operations as per task #7, and terminated both EC2 instances, as we concluded that they'll be replaced by ELB and auto scaling EC2 instances, as per proposed architecture in Phase 4. 
 ## Phase 4: Implementing high availability and scalability
