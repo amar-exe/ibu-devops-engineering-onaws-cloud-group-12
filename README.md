@@ -106,8 +106,7 @@ chmod +x /etc/rc.local
 This ensured we have a MySQL server set up and ready for adding students. But it had it’s downsides, because each instance was isolated and the application was not scalable. Last task was to actually test this deployment with some basic CRUD tasks, which we performed manually, and below you can find the screenshots:
 (insert screenshots)
 ## Phase 3: Decoupling the application components
-As our original architecture included multiple AZs we did not need to do any updating or reconfiguration of the VPC, therefore we skipped task #1 and immediately went to task #2. In this task we've set up Amazon RDS, alongside with appropriate Security Groups to ensure that the database can only be accesed from the EC2 instances in our VPC, therefore making it more secure.
-(PHOTO 5)
+As our original architecture included multiple AZs we did not need to do any updating or reconfiguration of the VPC, therefore we skipped task #1 and immediately went to task #2. In this task we've set up Amazon RDS, alongside with appropriate Security Groups to ensure that the database can only be accesed from the EC2 instances in our VPC, therefore making it more secure.\
 Next step was to setup Cloud 9 IDE, which we've done, together with security groups similiar to the one in previous tasks, making sure that Cloud 9 has access to both EC2 instances and RDS MySQL database. After we made sure Cloud 9 can "see" EC2 instance and RDS MySQL Database by using "ping" and "ssh" commands on their internal IPs, we proceeded on with task #4 which was provisioning AWS secrets manager. We've done that by running command below:
 ```
 aws secretsmanager create-secret \
