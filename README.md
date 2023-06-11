@@ -49,15 +49,17 @@ Project done in DevOps Engineering on AWS cloud course at International Burch Un
  
 # Project Documentation
 ## Phase 1: Planning the design and estimating cost
-(CHANGE THIS)
 During previous month we were in "DevOps Engineering on AWS cloud" course that required us to work on a final project titled "Building a Highly Available, Scalable Web Application". We started off with building architecture diagram proposal for the aformentioned application.
 At first, we planned to have separate private subnets for both our databases and web application. Based on the example given by AWS "here", we've created following architecture diagram.
  
-(PICTURE ONE)
+<img src=/docs/diagrams/initial_architecture_plan.png alt=instagram style="margin-bottom: 5px;" />
+
 But as we worked on the project, we realized this plan wouldn't work. Instead, we used private subnets only for our databases, and our EC2 instances were publicly available.Even though we were initially worried about this change, it turned out to be the right decision. We successfully completed our project, and the public could access our EC2 instances over the Elastic Load Balancer DNS. This experience taught us the importance of being flexible and adaptable when working on a project. Therefore here's the final version of the architecture diagram that was in the end used in our project:
-(PICTURE TWO)
+
+<img src=/docs/diagrams/actual_architecture.png alt=instagram style="margin-bottom: 5px;" />
  
-When we've settled upon the architecture above, we've proceeded on to the next task, which was estimating costs of "Building a Highly Available, Scalable Web Application", we've headed to AWS Pricing Calculator. Estimation summary is given below, but for the full report click HERE.
+When we've settled upon the architecture above, we've proceeded on to the next task, which was estimating costs of "Building a Highly Available, Scalable Web Application", we've headed to AWS Pricing Calculator. Estimation summary is given below, but for the full report click <a href=https://github.com/amar-exe/ibu-devops-engineering-onaws-cloud-group-12/blob/main/docs/CostEstimate.pdf>HERE.</a> \
+<img src=https://i.ibb.co/wcN9Gkh/estimate.jpg alt=instagram style="margin-bottom: 5px;" />
 ## Phase 2: Creating a basic functional web application
 We first set up our VPC, creating a secure environment for our Web Application. Our VPC contained 2 public and 2 private subnets. To allow public access to our application we had to set up an Internet Gateway to connect our VPC. We created a private and public route table to direct the traffic and establish a connection between the gateway and VPC.
  
